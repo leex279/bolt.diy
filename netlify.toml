@@ -5,12 +5,11 @@
   # The directory where the built files are located
   publish = "build/client"
 
+[build.environment]
   # Specify the Node.js version to match your package.json engines
-  environment = { 
-    NODE_VERSION = "18.18.0" 
-  }
+  NODE_VERSION = "18.18.0"
 
-# Optional: Define environment variables if needed
+# Optional: Define additional environment variables here
 # [build.environment]
 #   YOUR_ENV_VAR = "your_value"
 
