@@ -1,16 +1,13 @@
 // remix.config.js
+const { createNetlifyAdapter } = require("@remix-run/netlify");
+
 module.exports = {
-  // Specify the paths to your app's directories if they differ from the defaults
   appDirectory: "app",
   assetsBuildDirectory: "build/client/assets",
   publicPath: "/assets/",
-  
-  // Use the Netlify adapter
   serverBuildPath: "build/server/index.js",
   future: {
-    v2_meta: true,
+    v2_meta: true, // Adjust based on your Remix version and requirements
   },
-  
-  // Add the Netlify adapter
-  adapter: require("@remix-run/netlify"),
+  adapter: createNetlifyAdapter(),
 };
