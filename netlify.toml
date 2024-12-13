@@ -1,28 +1,21 @@
 [build]
-  # The command Netlify will run to build your project
   command = "npm run build"
-  
-  # The directory where the built files are located
-  publish = "build/client"
+  publish = "public" # This should match the output directory defined by the Remix Netlify adapter
+  functions = "netlify/functions" # Directory for Netlify Functions
 
-[build.environment]
-  # Specify the Node.js version to match your package.json engines
-  NODE_VERSION = "18.18.0"
-
-# Optional: Define additional environment variables here
-# [build.environment]
-#   YOUR_ENV_VAR = "your_value"
-
-# Optional: Redirects and rewrites for single-page applications
+# Redirect all requests to the Remix serverless function
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/.netlify/functions/render"
   status = 200
+  force = true
 
-# Optional: Configure functions if your app uses Netlify Functions
-# [functions]
-#   directory = "netlify/functions"
+# Optional: Specify environment variables (if any)
+#[build.environment]
+#  NODE_ENV = "production"
+#  OTHER_ENV_VAR = "value"
 
-# Optional: Specify plugins if you are using any Netlify plugins
-# [[plugins]]
-#   package = "netlify-plugin-your-plugin"
+# Optional: Define Edge Handlers or other advanced configurations
+#[edge_handlers]
+#  path = "/some-path"
+#  handler = "path/to/handler.js"
